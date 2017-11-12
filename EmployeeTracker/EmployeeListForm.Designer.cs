@@ -37,6 +37,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btnEditEmployee = new System.Windows.Forms.Button();
             this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.btnDeleteProject = new System.Windows.Forms.Button();
+            this.btnEditProject = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -102,6 +104,7 @@
             this.lstProjects.Name = "lstProjects";
             this.lstProjects.Size = new System.Drawing.Size(181, 228);
             this.lstProjects.TabIndex = 5;
+            this.lstProjects.SelectedIndexChanged += new System.EventHandler(this.lstProjects_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -133,12 +136,37 @@
             this.btnDeleteEmployee.TabIndex = 8;
             this.btnDeleteEmployee.Text = "Delete\r\nEmployee";
             this.btnDeleteEmployee.UseVisualStyleBackColor = true;
+            this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
+            // 
+            // btnDeleteProject
+            // 
+            this.btnDeleteProject.Location = new System.Drawing.Point(532, 158);
+            this.btnDeleteProject.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeleteProject.Name = "btnDeleteProject";
+            this.btnDeleteProject.Size = new System.Drawing.Size(82, 47);
+            this.btnDeleteProject.TabIndex = 10;
+            this.btnDeleteProject.Text = "Delete Project";
+            this.btnDeleteProject.UseVisualStyleBackColor = true;
+            this.btnDeleteProject.Click += new System.EventHandler(this.btnProjectDelete);
+            // 
+            // btnEditProject
+            // 
+            this.btnEditProject.Location = new System.Drawing.Point(532, 96);
+            this.btnEditProject.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditProject.Name = "btnEditProject";
+            this.btnEditProject.Size = new System.Drawing.Size(82, 47);
+            this.btnEditProject.TabIndex = 9;
+            this.btnEditProject.Text = "Edit\r\nProject";
+            this.btnEditProject.UseVisualStyleBackColor = true;
+            this.btnEditProject.Click += new System.EventHandler(this.btnEditProject_Click);
             // 
             // EmployeeListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 400);
+            this.ClientSize = new System.Drawing.Size(638, 400);
+            this.Controls.Add(this.btnDeleteProject);
+            this.Controls.Add(this.btnEditProject);
             this.Controls.Add(this.btnDeleteEmployee);
             this.Controls.Add(this.btnEditEmployee);
             this.Controls.Add(this.btnAddProject);
@@ -167,6 +195,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnEditEmployee;
         private System.Windows.Forms.Button btnDeleteEmployee;
+        private System.Windows.Forms.Button btnDeleteProject;
+        private System.Windows.Forms.Button btnEditProject;
     }
 }
 
