@@ -23,7 +23,7 @@ namespace EmployeeTracker
 
         // a delegete method: this is the method siginature that 
         // will be used throughout the class by ShowResults and 
-        // the listener results_ShowResults to update the result text
+        // the listener Results_ShowResults to update the result text
         delegate void SetText(string message);
 
         // event object: raised in code to signal to 
@@ -58,10 +58,10 @@ namespace EmployeeTracker
             // constructor calling this constructor
             txtId.Text = GetNextId().ToString();
 
-            // attach the event listener, the results_ShowResults method,
-            // to the ShowResults event, the code in results_ShowResults 
+            // attach the event listener, the Results_ShowResults method,
+            // to the ShowResults event, the code in Results_ShowResults 
             // will get executed when the event is raised
-            ShowResults += results_ShowResults;
+            ShowResults += Results_ShowResults;
 
             // raising the event on start up
             // to set the results to a empty string
@@ -101,12 +101,12 @@ namespace EmployeeTracker
                 txtDescription.Text = _project.Description;
                 dtStartDate.Text = _project.StartDate.ToString();
                 dtEndDate.Text = _project.EndDate.ToString();
-                loadTechnologies();
+                LoadTechnologies();
                 _adding = false;
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
             _project.Id = int.Parse(txtId.Text);
             _project.Name = txtName.Text;
@@ -117,7 +117,7 @@ namespace EmployeeTracker
             if (_adding)
             {
                 _projects.Add(_project);
-                _adding = false;  // good idea Cooper, take it out of edit mode after the first save
+                _adding = false;  // take it out of edit mode after the first save
             }
 
             ShowResults("Saved");
@@ -125,7 +125,7 @@ namespace EmployeeTracker
 
         }
 
-        private void loadTechnologies()
+        private void LoadTechnologies()
         {
             // clear the list
             lstTechnologies.Items.Clear();
@@ -137,12 +137,12 @@ namespace EmployeeTracker
             }
         }
 
-        private void results_ShowResults(string message)
+        private void Results_ShowResults(string message)
         {
             lblResult.Text = message;
         }
 
-        private void lstTechnologies_Click(object sender, EventArgs e)
+        private void LstTechnologies_Click(object sender, EventArgs e)
         {
             // use the static Prompt class to create a custom
             // prompt
@@ -153,7 +153,7 @@ namespace EmployeeTracker
             _project.Technologies.Add(tech);
 
             // reload the list
-            loadTechnologies();
+            LoadTechnologies();
         }
 
         /// <summary>
@@ -172,30 +172,29 @@ namespace EmployeeTracker
             }
         }
 
-
         // whenenver a form field is modified raise the ShowResults
         // event method to clear the results label
-        private void txtName_TextChanged(object sender, EventArgs e)
+        private void TxtName_TextChanged(object sender, EventArgs e)
         {
             ShowResults("");
         }
 
-        private void txtDescription_TextChanged(object sender, EventArgs e)
+        private void TxtDescription_TextChanged(object sender, EventArgs e)
         {
             ShowResults("");
         }
 
-        private void dtStartDate_ValueChanged(object sender, EventArgs e)
+        private void DtStartDate_ValueChanged(object sender, EventArgs e)
         {
             ShowResults("");
         }
 
-        private void dtEndDate_ValueChanged(object sender, EventArgs e)
+        private void DtEndDate_ValueChanged(object sender, EventArgs e)
         {
             ShowResults("");
         }
 
-        private void lstTechnologies_SelectedIndexChanged(object sender, EventArgs e)
+        private void LstTechnologies_SelectedIndexChanged(object sender, EventArgs e)
         {
             ShowResults("");
         }

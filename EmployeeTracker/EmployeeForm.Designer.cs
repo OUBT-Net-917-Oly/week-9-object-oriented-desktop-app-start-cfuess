@@ -77,7 +77,7 @@
             this.txtFirst.Name = "txtFirst";
             this.txtFirst.Size = new System.Drawing.Size(131, 22);
             this.txtFirst.TabIndex = 3;
-            this.txtFirst.TextChanged += new System.EventHandler(this.txtFirst_TextChanged);
+            this.txtFirst.TextChanged += new System.EventHandler(this.TxtFirst_TextChanged);
             // 
             // txtLast
             // 
@@ -86,7 +86,7 @@
             this.txtLast.Name = "txtLast";
             this.txtLast.Size = new System.Drawing.Size(131, 22);
             this.txtLast.TabIndex = 4;
-            this.txtLast.TextChanged += new System.EventHandler(this.txtLast_TextChanged);
+            this.txtLast.TextChanged += new System.EventHandler(this.TxtLast_TextChanged);
             // 
             // dtHireDate
             // 
@@ -95,7 +95,7 @@
             this.dtHireDate.Name = "dtHireDate";
             this.dtHireDate.Size = new System.Drawing.Size(241, 22);
             this.dtHireDate.TabIndex = 5;
-            this.dtHireDate.ValueChanged += new System.EventHandler(this.dtHireDate_ValueChanged);
+            this.dtHireDate.ValueChanged += new System.EventHandler(this.DtHireDate_ValueChanged);
             // 
             // btnSave
             // 
@@ -106,7 +106,7 @@
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // lblResult
             // 

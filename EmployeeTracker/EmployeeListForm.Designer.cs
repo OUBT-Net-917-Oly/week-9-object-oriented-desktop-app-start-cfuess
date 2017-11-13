@@ -71,7 +71,7 @@
             this.lstEmployees.Name = "lstEmployees";
             this.lstEmployees.Size = new System.Drawing.Size(181, 228);
             this.lstEmployees.TabIndex = 2;
-            this.lstEmployees.SelectedIndexChanged += new System.EventHandler(this.lstEmployees_SelectedIndexChanged);
+            this.lstEmployees.SelectedIndexChanged += new System.EventHandler(this.LstEmployees_SelectedIndexChanged);
             // 
             // btnAddEmployee
             // 
@@ -82,7 +82,7 @@
             this.btnAddEmployee.TabIndex = 3;
             this.btnAddEmployee.Text = "Add\r\nEmployee";
             this.btnAddEmployee.UseVisualStyleBackColor = true;
-            this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
+            this.btnAddEmployee.Click += new System.EventHandler(this.BtnAddEmployee_Click);
             // 
             // btnAddProject
             // 
@@ -93,7 +93,7 @@
             this.btnAddProject.TabIndex = 6;
             this.btnAddProject.Text = "Add\r\nProject";
             this.btnAddProject.UseVisualStyleBackColor = true;
-            this.btnAddProject.Click += new System.EventHandler(this.btnAddProject_Click);
+            this.btnAddProject.Click += new System.EventHandler(this.BtnAddProject_Click);
             // 
             // lstProjects
             // 
@@ -104,7 +104,7 @@
             this.lstProjects.Name = "lstProjects";
             this.lstProjects.Size = new System.Drawing.Size(181, 228);
             this.lstProjects.TabIndex = 5;
-            this.lstProjects.SelectedIndexChanged += new System.EventHandler(this.lstProjects_SelectedIndexChanged);
+            this.lstProjects.SelectedIndexChanged += new System.EventHandler(this.LstProjects_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -125,7 +125,7 @@
             this.btnEditEmployee.TabIndex = 7;
             this.btnEditEmployee.Text = "Edit\r\nEmployee";
             this.btnEditEmployee.UseVisualStyleBackColor = true;
-            this.btnEditEmployee.Click += new System.EventHandler(this.btnEditEmployee_Click);
+            this.btnEditEmployee.Click += new System.EventHandler(this.BtnEditEmployee_Click);
             // 
             // btnDeleteEmployee
             // 
@@ -136,7 +136,7 @@
             this.btnDeleteEmployee.TabIndex = 8;
             this.btnDeleteEmployee.Text = "Delete\r\nEmployee";
             this.btnDeleteEmployee.UseVisualStyleBackColor = true;
-            this.btnDeleteEmployee.Click += new System.EventHandler(this.btnDeleteEmployee_Click);
+            this.btnDeleteEmployee.Click += new System.EventHandler(this.BtnDeleteEmployee_Click);
             // 
             // btnDeleteProject
             // 
@@ -147,7 +147,7 @@
             this.btnDeleteProject.TabIndex = 10;
             this.btnDeleteProject.Text = "Delete Project";
             this.btnDeleteProject.UseVisualStyleBackColor = true;
-            this.btnDeleteProject.Click += new System.EventHandler(this.btnProjectDelete);
+            this.btnDeleteProject.Click += new System.EventHandler(this.BtnProjectDelete);
             // 
             // btnEditProject
             // 
@@ -158,7 +158,7 @@
             this.btnEditProject.TabIndex = 9;
             this.btnEditProject.Text = "Edit\r\nProject";
             this.btnEditProject.UseVisualStyleBackColor = true;
-            this.btnEditProject.Click += new System.EventHandler(this.btnEditProject_Click);
+            this.btnEditProject.Click += new System.EventHandler(this.BtnEditProject_Click);
             // 
             // EmployeeListForm
             // 

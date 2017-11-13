@@ -25,25 +25,41 @@ namespace EmployeeTracker
             InitializeComponent();
             _fileManager = new FileManager();
             _dataStore = _fileManager.Load();
-            loadEmployeeList();
-            loadProjectList();
+            LoadEmployeeList();
+            LoadProjectList();
         }
 
-        private void btnAddEmployee_Click(object sender, EventArgs e)
+        private void BtnAddEmployee_Click(object sender, EventArgs e)
         {
-            EmployeeForm employeeForm = new EmployeeForm(_dataStore.Employees);
-            employeeForm.DoSave += SaveAndReload;
+            var employee = new Employee();
+            employee.Id = _dataStore.GetNextEmployeeId();
+
+            // indicate that we are saving via the true add parameter
+            EmployeeForm employeeForm = new EmployeeForm(employee, true);
+            
+            // attach the event listener, SaveEmployeeAndReload, to the DoSave event 
+            employeeForm.DoSave += SaveEmployeeAndReload;
             employeeForm.Show();
         }
 
         private void SaveAndReload(object sender, EventArgs e)
         {
             _fileManager.Save(_dataStore);
-            loadEmployeeList();
-            loadProjectList();
+            LoadEmployeeList();
+            LoadProjectList();
         }
 
-        private void loadEmployeeList()
+        private void SaveEmployeeAndReload(Employee sender, bool add)
+        {
+            if (add)
+            {
+                _dataStore.Employees.Add(sender);
+            }
+            _fileManager.Save(_dataStore);
+            LoadEmployeeList();
+        }
+
+        private void LoadEmployeeList()
         {
             //// clear the list
             //lstEmployees.Items.Clear();
@@ -61,7 +77,7 @@ namespace EmployeeTracker
             lstEmployees.DisplayMember = "FullName";
         }
 
-        private void loadProjectList()
+        private void LoadProjectList()
         {
             //// clear the list
             //lstProjects.Items.Clear();
@@ -76,7 +92,7 @@ namespace EmployeeTracker
             lstProjects.DisplayMember = "Name";
         }
 
-        private void btnAddProject_Click(object sender, EventArgs e)
+        private void BtnAddProject_Click(object sender, EventArgs e)
         {
             ProjectForm projectForm = new ProjectForm(_dataStore.Projects);
             // attach the event listener, SaveAndReload, to the 
@@ -87,7 +103,7 @@ namespace EmployeeTracker
         }
 
         // When an item in the listbox is clicked get the id for editing and deleting
-        private void lstEmployees_SelectedIndexChanged(object sender, EventArgs e)
+        private void LstEmployees_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -101,19 +117,21 @@ namespace EmployeeTracker
             }
         }
 
-        private void btnEditEmployee_Click(object sender, EventArgs e)
+        private void BtnEditEmployee_Click(object sender, EventArgs e)
         {
-            // call the constructor that will initiate an edit instead of an add
-            EmployeeForm employeeForm = new EmployeeForm(_dataStore.Employees, _selectedEmployeeId);
+            var employee = _dataStore.Employees.Single(proj => proj.Id == _selectedEmployeeId);
             
-            // attach the event listener, SaveAndReload, to the DoSave event 
-            employeeForm.DoSave += SaveAndReload;
+            // call the constructor, indicate edit with the false parameter
+            EmployeeForm employeeForm = new EmployeeForm(employee, false);
+
+            // attach the event listener, SaveEmployeeAndReload, to the DoSave event 
+            employeeForm.DoSave += SaveEmployeeAndReload;
             employeeForm.Show();
         }
 
-        private void btnDeleteEmployee_Click(object sender, EventArgs e)
+        private void BtnDeleteEmployee_Click(object sender, EventArgs e)
         {
-            if (!isSure("Employee"))
+            if (!IsSure("Employee"))
             {
                 return;  //exit the function; do not run rest of code
             }
@@ -129,9 +147,9 @@ namespace EmployeeTracker
             }
         }
 
-        private void btnProjectDelete(object sender, EventArgs e)
+        private void BtnProjectDelete(object sender, EventArgs e)
         {
-            if (!isSure("Project"))
+            if (!IsSure("Project"))
             {
                 return;  //exit the function; do not run rest of code
             }
@@ -156,8 +174,7 @@ namespace EmployeeTracker
             }
         }
 
-
-        private void btnEditProject_Click(object sender, EventArgs e)
+        private void BtnEditProject_Click(object sender, EventArgs e)
         {
             // call the constructor that will initiate an edit instead of an add
             ProjectForm projectForm = new ProjectForm(_dataStore.Projects, _selectedProjectId);
@@ -168,7 +185,7 @@ namespace EmployeeTracker
         }
 
         // When an item in the listbox is clicked get the id for editing and deleting
-        private void lstProjects_SelectedIndexChanged(object sender, EventArgs e)
+        private void LstProjects_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -182,7 +199,7 @@ namespace EmployeeTracker
             }
         }
 
-        private bool isSure(string item)
+        private bool IsSure(string item)
         {
             string message = "Are you sure you want to delete this " + item + "?";
             string caption = "Delete " + item;

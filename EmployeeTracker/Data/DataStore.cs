@@ -24,5 +24,22 @@ namespace EmployeeTracker.Data
             Employees = new List<Employee>();
             Projects = new List<Project>();
         }
+
+        /// <summary>
+        /// This will get the next unused id in the list of employees 
+        /// </summary>
+        /// <returns>int max + 1</returns>
+        public int GetNextEmployeeId()
+        {
+            if (!this.Employees.Any())
+            {
+                return 0;
+            }
+            else
+            {
+                // var stores = _projects.Where(p => p.Name == "grocery");
+                return this.Employees.Max(p => p.Id) + 1;
+            }
+        }
     }
 }
